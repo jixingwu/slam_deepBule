@@ -1,0 +1,12 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/jixingwu/Thiredpart/slam_deepBule/PA1/myproject/backup/cmake/t2/src/main.cpp
+stdio.h
+-
+

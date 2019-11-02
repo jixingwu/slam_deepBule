@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+   <FileVersion major="1" minor="6" />
+   <Project>
+      <Option title="Project" />
+      <Option makefile_is_custom="1" />
+      <Option compiler="gcc" />
+      <Option virtualFolders="CMake Files\;CMake Files\src\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\..\usr\local\;CMake Files\..\..\..\..\..\..\usr\local\lib\;CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\;CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\Pangolin\;CMake Files\..\..\..\Sophus\;CMake Files\..\..\..\Sophus\build\;" />
+      <Build>
+      <Target title="all">
+         <Option working_dir="/home/jixingwu/Thiredpart/slam_deepBule/PA3/6/cmake-build-debug" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/jixingwu/Thiredpart/slam_deepBule/PA3/6/cmake-build-debug/Makefile&quot;  VERBOSE=1 all" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/jixingwu/Thiredpart/slam_deepBule/PA3/6/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/jixingwu/Thiredpart/slam_deepBule/PA3/6/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/jixingwu/Thiredpart/slam_deepBule/PA3/6/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="edit_cache">
+         <Option working_dir="/home/jixingwu/Thiredpart/slam_deepBule/PA3/6/cmake-build-debug" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/jixingwu/Thiredpart/slam_deepBule/PA3/6/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/jixingwu/Thiredpart/slam_deepBule/PA3/6/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/jixingwu/Thiredpart/slam_deepBule/PA3/6/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/jixingwu/Thiredpart/slam_deepBule/PA3/6/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="rebuild_cache">
+         <Option working_dir="/home/jixingwu/Thiredpart/slam_deepBule/PA3/6/cmake-build-debug" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/jixingwu/Thiredpart/slam_deepBule/PA3/6/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/jixingwu/Thiredpart/slam_deepBule/PA3/6/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/jixingwu/Thiredpart/slam_deepBule/PA3/6/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/jixingwu/Thiredpart/slam_deepBule/PA3/6/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="draw_trajectory">
+         <Option output="/home/jixingwu/Thiredpart/slam_deepBule/PA3/6/cmake-build-debug/bin/draw_trajectory" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/jixingwu/Thiredpart/slam_deepBule/PA3/6/cmake-build-debug/bin" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add option="-DCOMPILEDWITHC11" />
+            <Add directory="/home/jixingwu/Thiredpart/Sophus" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/c++/5" />
+            <Add directory="/usr/include/c++/5/backward" />
+            <Add directory="/usr/include/eigen3" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/5" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed" />
+            <Add directory="/usr/local/include" />
+            <Add directory="/usr/local/lib/cmake/Pangolin/../../../include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/jixingwu/Thiredpart/slam_deepBule/PA3/6/cmake-build-debug/bin/Makefile&quot;  VERBOSE=1 draw_trajectory" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/jixingwu/Thiredpart/slam_deepBule/PA3/6/cmake-build-debug/bin/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/jixingwu/Thiredpart/slam_deepBule/PA3/6/cmake-build-debug/bin/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/jixingwu/Thiredpart/slam_deepBule/PA3/6/cmake-build-debug/bin/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="draw_trajectory/fast">
+         <Option output="/home/jixingwu/Thiredpart/slam_deepBule/PA3/6/cmake-build-debug/bin/draw_trajectory" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/jixingwu/Thiredpart/slam_deepBule/PA3/6/cmake-build-debug/bin" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add option="-DCOMPILEDWITHC11" />
+            <Add directory="/home/jixingwu/Thiredpart/Sophus" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/c++/5" />
+            <Add directory="/usr/include/c++/5/backward" />
+            <Add directory="/usr/include/eigen3" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/5" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed" />
+            <Add directory="/usr/local/include" />
+            <Add directory="/usr/local/lib/cmake/Pangolin/../../../include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/jixingwu/Thiredpart/slam_deepBule/PA3/6/cmake-build-debug/bin/Makefile&quot;  VERBOSE=1 draw_trajectory/fast" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/jixingwu/Thiredpart/slam_deepBule/PA3/6/cmake-build-debug/bin/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/jixingwu/Thiredpart/slam_deepBule/PA3/6/cmake-build-debug/bin/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/jixingwu/Thiredpart/slam_deepBule/PA3/6/cmake-build-debug/bin/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      </Build>
+      <Unit filename="/home/jixingwu/Thiredpart/slam_deepBule/PA3/6/src/draw_trajectory.cpp">
+         <Option target="draw_trajectory"/>
+      </Unit>
+      <Unit filename="/home/jixingwu/Thiredpart/slam_deepBule/PA3/6/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\" />
+      </Unit>
+      <Unit filename="/home/jixingwu/Thiredpart/slam_deepBule/PA3/6/src/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\src\" />
+      </Unit>
+      <Unit filename="/home/jixingwu/Thiredpart/slam_deepBule/PA3/6/src/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\src\" />
+      </Unit>
+      <Unit filename="/home/jixingwu/Thiredpart/slam_deepBule/PA3/6/../../../../../../usr/local/lib/cmake/Pangolin/PangolinConfigVersion.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\Pangolin\" />
+      </Unit>
+      <Unit filename="/home/jixingwu/Thiredpart/slam_deepBule/PA3/6/../../../../../../usr/local/lib/cmake/Pangolin/PangolinConfig.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\Pangolin\" />
+      </Unit>
+      <Unit filename="/home/jixingwu/Thiredpart/slam_deepBule/PA3/6/../../../../../../usr/local/lib/cmake/Pangolin/PangolinTargets.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\Pangolin\" />
+      </Unit>
+      <Unit filename="/home/jixingwu/Thiredpart/slam_deepBule/PA3/6/../../../../../../usr/local/lib/cmake/Pangolin/PangolinTargets-release.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\Pangolin\" />
+      </Unit>
+      <Unit filename="/home/jixingwu/Thiredpart/slam_deepBule/PA3/6/../../../../../../usr/local/lib/cmake/Pangolin/PangolinConfigVersion.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\Pangolin\" />
+      </Unit>
+      <Unit filename="/home/jixingwu/Thiredpart/slam_deepBule/PA3/6/../../../../../../usr/local/lib/cmake/Pangolin/PangolinConfig.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\Pangolin\" />
+      </Unit>
+      <Unit filename="/home/jixingwu/Thiredpart/slam_deepBule/PA3/6/../../../../../../usr/local/lib/cmake/Pangolin/PangolinTargets.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\Pangolin\" />
+      </Unit>
+      <Unit filename="/home/jixingwu/Thiredpart/slam_deepBule/PA3/6/../../../../../../usr/local/lib/cmake/Pangolin/PangolinTargets-release.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\local\lib\cmake\Pangolin\" />
+      </Unit>
+      <Unit filename="/home/jixingwu/Thiredpart/slam_deepBule/PA3/6/../../../Sophus/build/SophusConfig.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\Sophus\build\" />
+      </Unit>
+      <Unit filename="/home/jixingwu/Thiredpart/slam_deepBule/PA3/6/../../../Sophus/build/SophusConfig.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\Sophus\build\" />
+      </Unit>
+   </Project>
+</CodeBlocks_project_file>

@@ -1,0 +1,1 @@
+/usr/bin/c++    -Wall   -O3 -march=native -std=c++11 -g   CMakeFiles/DRAWTRAJ.dir/draw_trajectory.cpp.o  -o DRAWTRAJ -rdynamic 
