@@ -1,0 +1,55 @@
+Determining if the pthread_create exist failed with the following output:
+Change Dir: /home/jixingwu/Thiredpart/slam_deepBule/PA4/2/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_52fa8/fast"
+/usr/bin/make -f CMakeFiles/cmTC_52fa8.dir/build.make CMakeFiles/cmTC_52fa8.dir/build
+make[1]: Entering directory '/home/jixingwu/Thiredpart/slam_deepBule/PA4/2/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_52fa8.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -Wall  -O3 -march=native     -o CMakeFiles/cmTC_52fa8.dir/CheckSymbolExists.c.o   -c /home/jixingwu/Thiredpart/slam_deepBule/PA4/2/cmake-build-debug/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_52fa8
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_52fa8.dir/link.txt --verbose=1
+/usr/bin/cc    -Wall  -O3 -march=native      CMakeFiles/cmTC_52fa8.dir/CheckSymbolExists.c.o  -o cmTC_52fa8 -rdynamic 
+CMakeFiles/cmTC_52fa8.dir/CheckSymbolExists.c.o：在函数‘main’中：
+CheckSymbolExists.c:(.text.startup+0x6)：对‘pthread_create’未定义的引用
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_52fa8.dir/build.make:97: recipe for target 'cmTC_52fa8' failed
+make[1]: *** [cmTC_52fa8] Error 1
+make[1]: Leaving directory '/home/jixingwu/Thiredpart/slam_deepBule/PA4/2/cmake-build-debug/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_52fa8/fast' failed
+make: *** [cmTC_52fa8/fast] Error 2
+
+File /home/jixingwu/Thiredpart/slam_deepBule/PA4/2/cmake-build-debug/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/jixingwu/Thiredpart/slam_deepBule/PA4/2/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_eb54f/fast"
+/usr/bin/make -f CMakeFiles/cmTC_eb54f.dir/build.make CMakeFiles/cmTC_eb54f.dir/build
+make[1]: Entering directory '/home/jixingwu/Thiredpart/slam_deepBule/PA4/2/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_eb54f.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -Wall  -O3 -march=native  -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_eb54f.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_eb54f
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_eb54f.dir/link.txt --verbose=1
+/usr/bin/cc    -Wall  -O3 -march=native  -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_eb54f.dir/CheckFunctionExists.c.o  -o cmTC_eb54f -rdynamic -lpthreads 
+/usr/bin/ld: 找不到 -lpthreads
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_eb54f.dir/build.make:97: recipe for target 'cmTC_eb54f' failed
+make[1]: *** [cmTC_eb54f] Error 1
+make[1]: Leaving directory '/home/jixingwu/Thiredpart/slam_deepBule/PA4/2/cmake-build-debug/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_eb54f/fast' failed
+make: *** [cmTC_eb54f/fast] Error 2
+
+
