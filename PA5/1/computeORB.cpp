@@ -4,14 +4,15 @@
 //
 
 #include <opencv2/opencv.hpp>
-
+#include <Eigen/Core>
+#include <Eigen/Dense>
 #include <string>
 
 using namespace std;
 
 // global variables
-string first_file = "/home/jixingwu/Thiredpart/slam_deepBule/PA5/2/1.png";
-string second_file = "/home/jixingwu/Thiredpart/slam_deepBule/PA5/2/2.png";
+string first_file = "/home/jixingwu/slam_deepBule/PA5/1/1.png";
+string second_file = "/home/jixingwu/slam_deepBule/PA5/1/2.png";
 
 const double pi = 3.1415926;    // pi
 
@@ -46,8 +47,8 @@ void bfMatch(const vector<DescType> &desc1, const vector<DescType> &desc2, vecto
 int main(int argc, char **argv) {
 
     // load image
-    cv::Mat first_image = cv::imread(first_file, 0);    // load grayscale image
-    cv::Mat second_image = cv::imread(second_file, 0);  // load grayscale image
+    const cv::Mat first_image = cv::imread(first_file, 0);    // load grayscale image
+    const cv::Mat second_image = cv::imread(second_file, 0);  // load grayscale image
 
     // plot the image
     cv::imshow("first image", first_image);
@@ -103,40 +104,36 @@ int main(int argc, char **argv) {
 }
 
 // -------------------------------------------------------------------------------------------------- //
-template<typename T>
-bool compare_size(T a, T b)
-{
-    return a >= b;
-}
 
 // compute the angle
-void computeAngle(const cv::Mat &image, vector<cv::KeyPoint> &keypoints) {
+void computeAngle(const cv::Mat &image, vector<cv::KeyPoint> &keypoints)
+{
     int half_patch_size = 8;
-    int img_height = image.rows;
-    int  img_width = image.cols;
     for (auto &kp : keypoints) // 相当于 for(int i = 0; i<keypoints.size(); i++)
     {
 	    // START YOUR CODE HERE (~7 lines)
-        if(kp.pt.x>=half_patch_size & kp.pt.x < img_width-half_patch_size & kp.pt.y >= half_patch_size & kp.pt.y < img_height-half_patch_size )
+	    int x = cvRound(kp.pt.x);
+	    int y = cvRound(kp.pt.y);
+        if(x-half_patch_size<0 || x+half_patch_size>image.cols||
+           y-half_patch_size<0 || y+half_patch_size>image.rows)
+            continue;
+
+        double m01 = 0;double m10 = 0;
+
+        for (int u = -8; u <= 7; ++u)
         {
-            double m01 = 0;
-            double m10 = 0;
-
-            for (int u = -8; u <= 7; ++u)
+            for (int v = -8; v <= 7 ; ++v)
             {
-                for (int v = -8; v <= 7 ; ++v)
-                {
-                    int up = kp.pt.x + u;
-                    int vp = kp.pt.y + v;
-                    m01 += vp * image.at<double>(up, vp);
-                    m10 += up * image.at<double>(up, vp);
-                }
+                m01 += v * image.at<uchar>(y+v, x+u);   //获得单个像素值image.at<uchar>(y,x)
+                m10 += u * image.at<uchar>(y+v, x+u);
             }
-
-            kp.angle = std::atan2(m01, m10) * pi/180; // compute kp.angle
         }
-        // END YOUR CODE HERE
+
+        kp.angle = atan(m01/m10) * 180/pi; // compute kp.angle
+        cout<<"m01 = "<<m01<<"m10 = "<<m10<<" "<<"kp.angle = "<<kp.angle<<endl;
     }
+    // END YOUR CODE HERE
+
     return;
 }
 
@@ -403,15 +400,37 @@ int ORB_pattern[256 * 4] = {
 
 // compute the descriptor
 void computeORBDesc(const cv::Mat &image, vector<cv::KeyPoint> &keypoints, vector<DescType> &desc) {
-    for (auto &kp: keypoints) {
+    for (auto &kp: keypoints){
         DescType d(256, false);
-        for (int i = 0; i < 256; i++) {
+        for (int i = 0; i < 256; ++i) {
             // START YOUR CODE HERE (~7 lines)
-            d[i] = 0;  // if kp goes outside, set d.clear()
-	    // END YOUR CODE HERE
+            auto cos_ = float(cos(kp.angle*pi/180));
+            auto sin_ = float(sin(kp.angle*pi/180));
+            //注意pattern中的数如何取
+            cv::Point2f p_r(cos_*ORB_pattern[4*i+0] - sin_*ORB_pattern[4*i+1],
+                            sin_*ORB_pattern[4*i+0] + cos_*ORB_pattern[4*i+1]);
+            cv::Point2f q_r(cos_*ORB_pattern[4*i+2] - sin_*ORB_pattern[4*i+3],
+                            sin_*ORB_pattern[4*i+2] + cos_*ORB_pattern[4*i+3]);
+
+            cv::Point2f p(kp.pt+p_r); //获取p‘和q’的真实坐标才能获得像素值
+            cv::Point2f q(kp.pt+q_r);
+
+            //if kp goes outside, set d.clear()
+            if(p.x<0||p.y<0||p.x>image.cols||p.y>image.rows||
+            q.x<0||q.y<0||q.x>image.cols||q.y>image.rows){
+                d.clear();
+                break;
+            }
+
+            d[i] = image.at<uchar>(p) > image.at<uchar>(q)?0:1;
+        // END YOUR CODE HERE
         }
+
         desc.push_back(d);
+
     }
+
+
 
     int bad = 0;
     for (auto &d: desc) {
@@ -426,7 +445,8 @@ void bfMatch(const vector<DescType> &desc1, const vector<DescType> &desc2, vecto
     int d_max = 50;
 
     // START YOUR CODE HERE (~12 lines)
-    // find matches between desc1 and desc2. 
+    // find matches between desc1 and desc2.
+
     // END YOUR CODE HERE
 
     for (auto &m: matches) {

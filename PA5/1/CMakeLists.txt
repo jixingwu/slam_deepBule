@@ -24,6 +24,9 @@ endif()
 find_package(OpenCV REQUIRED)
 include_directories(${OpenCV_INCLUDE_DIRS})
 
+#eigen
+include_directories("/usr/include/eigen3")
+
 add_executable(computeORB_node computeORB.cpp)
 target_link_libraries(computeORB_node ${OpenCV_LIBS})
 
