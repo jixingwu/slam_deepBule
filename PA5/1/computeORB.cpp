@@ -53,7 +53,7 @@ int main(int argc, char **argv) {
     // plot the image
     cv::imshow("first image", first_image);
     cv::imshow("second image", second_image);
-    cv::waitKey(0);
+//    cv::waitKey(0);
 
     /// detect FAST keypoints using threshold=40 获取图像中的角点
     vector<cv::KeyPoint> keypoints;
@@ -73,7 +73,7 @@ int main(int argc, char **argv) {
                       cv::DrawMatchesFlags::DRAW_RICH_KEYPOINTS);
     cv::imshow("features", image_show);
     cv::imwrite("feat1.png", image_show);
-    cv::waitKey(0);
+//    cv::waitKey(0);
 
     // we can also match descriptors between images
     // same for the second
@@ -97,7 +97,7 @@ int main(int argc, char **argv) {
     cv::drawMatches(first_image, keypoints, second_image, keypoints2, matches, image_show);
     cv::imshow("matches", image_show);
     cv::imwrite("matches.png", image_show);
-    cv::waitKey(0);
+//    cv::waitKey(0);
 
     cout << "done." << endl;
     return 0;
@@ -446,7 +446,27 @@ void bfMatch(const vector<DescType> &desc1, const vector<DescType> &desc2, vecto
 
     // START YOUR CODE HERE (~12 lines)
     // find matches between desc1 and desc2.
-
+    for (int i = 0; i < desc1.size(); ++i) {
+        if(desc1[i].empty())
+            continue;
+        int d_min = 256, index = -1;
+        for (int j = 0; j < desc2.size(); ++j) {
+            if(desc2[i].empty())
+                continue;
+            int d = 0;
+            for (int k = 0; k < 256; ++k) {
+                d += desc1[i][k]^desc2[j][k];//异或：不同则为1, 汉明距离
+            }
+            if(d<d_min){
+                d_min = d;
+                index = j;
+            }
+            if(d_min<=d_max){
+                cv::DMatch match(i, index, d_min);
+                matches.push_back(match);
+            }
+        }
+    }
     // END YOUR CODE HERE
 
     for (auto &m: matches) {
