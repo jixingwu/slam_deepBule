@@ -1,0 +1,1 @@
+/usr/bin/c++    -std=c++11 -g   CMakeFiles/GNBA_node.dir/GN-BA.cpp.o  -o GNBA_node -rdynamic /home/jixingwu/Thiredpart/Sophus/build/libSophus.so -Wl,-rpath,/home/jixingwu/Thiredpart/Sophus/build 
