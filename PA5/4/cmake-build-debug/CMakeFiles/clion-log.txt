@@ -1,0 +1,6 @@
+/usr/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/jixingwu/slam_deepBule/PA5/4
+Build type: Debug
+-- Using flag -std=c++11.
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/jixingwu/slam_deepBule/PA5/4/cmake-build-debug
