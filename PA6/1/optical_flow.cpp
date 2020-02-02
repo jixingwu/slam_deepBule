@@ -186,8 +186,8 @@ void OpticalFlowSingleLevel(
                     // TODO START YOUR CODE HERE (~8 lines)
 
                     double error = 0;
-                    float u1 = float(kp.pt.x + x), v1 = float(kp.pt.y + y);
-                    float u2 = float(u1 + dx), v2 = float(v1 + dy);
+                    double u1 = double(kp.pt.x + x), v1 = double(kp.pt.y + y);
+                    double u2 = double(u1 + dx), v2 = double(v1 + dy);
 
                     Eigen::Vector2d J;  // Jacobian
 
@@ -265,12 +265,41 @@ void OpticalFlowMultiLevel(
     vector<Mat> pyr1, pyr2; // image pyramids
     // TODO START YOUR CODE HERE (~8 lines)
     for (int i = 0; i < pyramids; i++) {
-
+        Mat img1_t, img2_t;
+        resize(img1, img1_t, Size(img1.cols*scales[i], img1.rows*scales[i]));
+        resize(img2, img2_t, Size(img2.cols*scales[i], img2.rows*scales[i]));
+        pyr1.push_back(img1_t);
+        pyr2.push_back(img2_t);
+//        cout<<"Pyramid "<<i<<"img1 size: \n"<<img1_t.cols<<img1.rows<<endl;
     }
     // TODO END YOUR CODE HERE
 
     // coarse-to-fine LK tracking in pyramids
     // TODO START YOUR CODE HERE
+
+
+    for (int i = pyramids-1; i >= 0; --i) {
+
+        vector<KeyPoint> kp1_py;
+        vector<KeyPoint> kp2_py;
+        for (size_t j = 0; j < kp1.size(); ++j) {
+            KeyPoint kp1_py_mem;
+            kp1_py_mem.pt = kp1[j].pt * scales[i];
+            kp1_py.push_back(kp1_py_mem);
+
+            if(!kp2.empty()){
+                KeyPoint kp2_py_mem;
+                kp2_py_mem.pt = kp2[i].pt / scales[i];
+                kp2_py.push_back(kp2_py_mem);
+            }
+        }
+        OpticalFlowSingleLevel(pyr1[i], pyr2[i], kp1_py, kp2_py, success, inverse);
+        if(i==0){
+            kp2 = kp2_py;
+        }
+    }
+
+
 
     // TODO END YOUR CODE HERE
     // don't forget to set the results into kp2
