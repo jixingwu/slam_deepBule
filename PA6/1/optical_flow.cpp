@@ -157,11 +157,11 @@ void OpticalFlowSingleLevel(
             dy = kp2[i].pt.y - kp.pt.y;
         }
         // TODO ignore overflow value
-        int xx = cvRound(kp.pt.x);
-        int yy = cvRound(kp.pt.y);
-        if(xx-half_patch_size<0 || xx+half_patch_size>img1.cols||
-           yy-half_patch_size<0 || yy+half_patch_size>img1.rows)
-            continue;
+//        int xx = cvRound(kp.pt.x);
+//        int yy = cvRound(kp.pt.y);
+//        if(xx-half_patch_size<0 || xx+half_patch_size>img1.cols||
+//           yy-half_patch_size<0 || yy+half_patch_size>img1.rows)
+//            continue;
 
         double cost = 0, lastCost = 0;
         bool succ = true; // indicate if this point succeeded
@@ -206,7 +206,7 @@ void OpticalFlowSingleLevel(
 
                     // compute H, b and set cost;
                     H += J * J.transpose();
-                    b += -error * J;
+                    b += -J * error;
                     cost += error * error;
                     // TODO END YOUR CODE HERE
                 }
